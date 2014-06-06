@@ -5,10 +5,15 @@ Java API for LXC.
 Supports most LXC operations.
 Note that this library uses LXC's command line interface. It is NOT based on binding of LXC C library to Java.
 
+Requirements
+========
+
+- LXC 1.0.0 and above. Note that most functionality should be supported also on older versions.
+
 Usage
 ========
 
-API can connect to LXC host on local machine or to a remote machine using SSH.
+API can connect to LXC hosts on local machine or to a remote machine using SSH.
 
 **Connection Initialization:**
 
@@ -20,7 +25,13 @@ Remote LXC host:
 
 	Lxc remoteLxc = new Lxc("192.168.22.9","root","password"); //init SSH connection to remote LXC host
 
-- LXC commands are available only to previliged users by default. To execute commands as a super user, you should set initliaze connection with sudo support.
+- LXC commands are available only to previliged users by default. To execute commands as root, you should initialize connection with sudo enabled. For example:
+	
+	Lxc lxc = new Lxc(true); //init local LXC instance with sudo enabled
+	
+- To terminate connection to LXC host:
+
+	lxc.disconnect(); //disconnect current connection to LXC host (local/remote)
 
 **General Operations:**
 
@@ -47,5 +58,21 @@ Remote LXC host:
 	container.start() //start container as a daemon
 	
 	container.freeze() //freeze container
+	
+	
+License
+========
 
-The best way to explore all operations is to actually use the API.
+Copyright 2014 Waseem Hamshawi
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	   http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
