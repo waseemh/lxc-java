@@ -26,7 +26,7 @@ Remote LXC host:
 	Lxc remoteLxc = new Lxc("192.168.22.9","root","password"); //init SSH connection to remote LXC host
 
 - LXC commands are available only to previliged users by default. To execute commands as root, you should initialize connection with sudo enabled. For example:
-	
+
 	Lxc lxc = new Lxc(true); //init local LXC instance with sudo enabled
 	
 - To terminate connection to LXC host:
