@@ -8,13 +8,16 @@ Note that this library uses LXC's command line interface. It is NOT based on bin
 Usage
 ========
 
-Connection Initialization:
 API can connect to LXC host on local machine or to a remote machine using SSH.
 
+Connection Initialization:
+
 Local LXC host:
+
 	Lxc lxc = new Lxc(); //init local LXC instance
 
-Remote LXC host: 
+Remote LXC host:
+
 	Lxc remoteLxc = new Lxc("192.168.22.9","root","password"); //init SSH connection to remote LXC host
 
 - LXC commands are available only to previliged users by default. To execute commands as a super user, you should set initliaze connection with sudo support.
