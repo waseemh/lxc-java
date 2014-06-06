@@ -1,7 +1,7 @@
 lxc-java
 ========
 
-Java API for LXC. 
+Java API for LXC.
 Supports most LXC operations.
 Note that this library uses LXC's command line interface. It is NOT based on binding of LXC C library to Java.
 
@@ -10,7 +10,7 @@ Usage
 
 API can connect to LXC host on local machine or to a remote machine using SSH.
 
-Connection Initialization:
+**Connection Initialization:**
 
 Local LXC host:
 
@@ -22,7 +22,7 @@ Remote LXC host:
 
 - LXC commands are available only to previliged users by default. To execute commands as a super user, you should set initliaze connection with sudo support.
 
-General:
+**General Operations:**
 
 	lxc.version(); //get LXC version
 
@@ -30,9 +30,10 @@ General:
 
 	List<Container> runningContainers = lxc.runningContainers(); //return list of running containers
 
-Containers:
+**Containers:**
 
 	Container container = lxc.container("demo"); //get instance of container with name "demo"
+	
 	container.state() //get container state
 	
 	container.pid() //get container process id (if running)
