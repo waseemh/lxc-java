@@ -15,7 +15,7 @@ Usage
 
 API can connect to LXC hosts on local machine or to a remote machine using SSH.
 
-**Connection Initialization:**
+**Connection:**
 
 Local LXC host:
 
@@ -31,7 +31,7 @@ LXC commands are available only to previliged users by default. To execute comma
 	
 To terminate connection to LXC host:
 
-	lxc.disconnect(); //disconnect current connection to LXC host (local/remote)
+	lxc.disconnect(); //terminate current connection to LXC host (local/remote)
 
 **General Operations:**
 
@@ -59,7 +59,14 @@ To terminate connection to LXC host:
 	
 	container.freeze() //freeze container
 	
-	
+
+Building from Sources
+========
+
+Maven is used as a build system.
+In order to produce a package, run maven command `mvn clean package -DskipTests`.
+Tests can be executed using command `mvn test`. 
+
 License
 ========
 
