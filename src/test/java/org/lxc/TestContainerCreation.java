@@ -10,7 +10,7 @@ public class TestContainerCreation extends AbstractLxcTest{
 	@Before
 	public void setUp() throws LxcException {
 		
-		lxc = new Lxc("192.168.1.108","waseem","rnkun");
+		lxc = new Lxc(LXC_HOST,LXC_PORT,LXC_USERNAME,LXC_PASSWORD,true);
 
 		lxc.connect();
 		
