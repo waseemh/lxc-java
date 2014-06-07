@@ -17,10 +17,11 @@ public class TestLxcWait extends AbstractLxcTest{
 
 	@Test
 	public void test() throws LxcException {
-		Container testContainer = lxc.container("test2");
+		Container testContainer = lxc.container("test");
 		boolean eventOccur = testContainer.wait(ContainerState.STOPPED, 10);
 		if(eventOccur)
 			System.out.println("Event occured");
+		else System.out.println("Event didn't occur");
 	}
 
 	@After

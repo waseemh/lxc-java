@@ -107,12 +107,7 @@ public class LxcCliImpl implements ILxc{
 	 * @throws LxcException 
 	 */
 	public Container container(String name) throws LxcException {
-		List<Container> containers = this.containers();
-		for(Container container : containers) {
-			if(container.getName().equals(name))
-				return container;
-		}
-		return null;
+		return new ContainerCliImpl(connection,name);
 	}
 	
 	/**

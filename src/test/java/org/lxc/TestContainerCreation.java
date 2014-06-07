@@ -17,8 +17,9 @@ public class TestContainerCreation extends AbstractLxcTest{
 	}
 	
 	@Test
-	public void test() {
-		//lxc.createContainer("test100", "ubuntu");
+	public void test() throws LxcException {
+		Container container = lxc.container("test100");
+		container.create("ubuntu");
 	}
 
 	
