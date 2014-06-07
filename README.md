@@ -9,6 +9,8 @@ Requirements
 ========
 
 - LXC 1.0.0 and above. Note that most functionality should be supported also on older versions.
+- JDK6+
+- Maven (optional for building source)
 
 Usage
 ========
@@ -45,20 +47,39 @@ To terminate connection to LXC host:
 
 	Container container = lxc.container("demo"); //get instance of container with name "demo"
 	
-	container.state() //get container state
 	
-	container.pid() //get container process id (if running)
+Get various information about available containers:
+
+	container.state(); //get container state (running, stopped, stopping, frozen, ...)
 	
-	container.ip() //get container ip
+	container.pid(); //get container process id (if running)
 	
-	container.memoryUsage() //get container memory usage
+	container.ip(); //get container ip
 	
-	container.memoryLimit() //get container memory limit
+	container.memoryUsage(); //get container memory usage
 	
-	container.start() //start container as a daemon
+	container.memoryLimit(); //get container memory limit
 	
-	container.freeze() //freeze container
+	container.getCgroup(memory.usage_in_bytes); //get cgroup value
+
+Execute operations on available containers:
 	
+	container.start(); //start container as a daemon
+	
+	container.freeze(); //freeze container
+	
+	container.stop(); //stop running container
+	
+	container.restart(); //restart container
+	
+	container.snapshot(); //take a snapshot of container
+	
+	container.clone("NewContainer") //clone current container with a new name
+	
+	container.wait(ContainerState.STOPPED, 10); //wait for container to reach a specific state with a timeout.
+
+
+For more available functionality and examples, take a look at the unit tests or explore the API by yourself.	
 
 Building from Sources
 ========
