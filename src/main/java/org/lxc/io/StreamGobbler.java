@@ -22,12 +22,12 @@ public class StreamGobbler extends Thread{
 	}
 
 	public void run() {
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
 		try {
 			PrintWriter pw = null;
 			if(os!=null)
 				pw = new PrintWriter(os);
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
 			String line = null;
 			while( (line = br.readLine()) != null ) {
 				if(pw!=null)
@@ -38,6 +38,13 @@ public class StreamGobbler extends Thread{
 				pw.flush();
 		} catch(IOException ioe) {
 			ioe.printStackTrace();
+		} finally {
+			if(isr != null) {
+				isr.close();
+			}
+			if(br != null) {
+				br.close();
+			}
 		}
 	}
 
