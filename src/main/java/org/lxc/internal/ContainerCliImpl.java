@@ -215,8 +215,8 @@ public class ContainerCliImpl implements Container{
 	 */
 	public void destroy(boolean force) throws LxcException {
 		if(force)
-			executeContainerCommand("destory","-f");
-		else executeContainerCommand("destory");
+			executeContainerCommand("destroy","-f");
+		else executeContainerCommand("destroy");
 	}
 
 	/**
