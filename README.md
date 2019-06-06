@@ -21,63 +21,71 @@ API can connect to LXC hosts on local machine or to a remote machine using SSH.
 
 Local LXC host:
 
-	Lxc lxc = new Lxc(); //init local LXC instance
+```java
+Lxc lxc = new Lxc(); //init local LXC instance
+```
 
 Remote LXC host:
-
+```java
 	Lxc remoteLxc = new Lxc("192.168.22.9","root","password"); //init SSH connection to remote LXC host
+```
 
 LXC commands are available only to previliged users by default. To execute commands as root, you should initialize connection with sudo enabled. For example:
+```java
+Lxc lxc = new Lxc(true); //init local LXC instance with sudo enabled
+```
 
-	Lxc lxc = new Lxc(true); //init local LXC instance with sudo enabled
-	
 To terminate connection to LXC host:
-
-	lxc.disconnect(); //terminate current connection to LXC host (local/remote)
+```java
+lxc.disconnect(); //terminate current connection to LXC host (local/remote)
+```
 
 **General Operations:**
+```java
+lxc.version(); //get LXC version
 
-	lxc.version(); //get LXC version
+List<Container> allContainers = lxc.containers(); //return list of all containers
 
-	List<Container> allContainers = lxc.containers(); //return list of all containers
-
-	List<Container> runningContainers = lxc.runningContainers(); //return list of running containers
+List<Container> runningContainers = lxc.runningContainers(); //return list of running containers
+```
 
 **Containers:**
 
-	Container container = lxc.container("demo"); //get instance of container with name "demo"
-	
-	
-Get various information about available containers:
+```java
+Container container = lxc.container("demo"); //get instance of container with name "demo"
+```
 
-	container.state(); //get container state (running, stopped, stopping, frozen, ...)
-	
-	container.pid(); //get container process id (if running)
-	
-	container.ip(); //get container ip
-	
-	container.memoryUsage(); //get container memory usage
-	
-	container.memoryLimit(); //get container memory limit
-	
-	container.getCgroup(memory.usage_in_bytes); //get cgroup value
+Get various information about available containers:
+```java
+container.state(); //get container state (running, stopped, stopping, frozen, ...)
+
+container.pid(); //get container process id (if running)
+
+container.ip(); //get container ip
+
+container.memoryUsage(); //get container memory usage
+
+container.memoryLimit(); //get container memory limit
+
+container.getCgroup(memory.usage_in_bytes); //get cgroup value
+```
 
 Execute operations on available containers:
-	
-	container.start(); //start container as a daemon
-	
-	container.freeze(); //freeze container
-	
-	container.stop(); //stop running container
-	
-	container.restart(); //restart container
-	
-	container.snapshot(); //take a snapshot of container
-	
-	container.clone("NewContainer") //clone current container with a new name
-	
-	container.wait(ContainerState.STOPPED, 10); //wait for container to reach a specific state with a timeout.
+```java	
+container.start(); //start container as a daemon
 
+container.freeze(); //freeze container
+
+container.stop(); //stop running container
+
+container.restart(); //restart container
+
+container.snapshot(); //take a snapshot of container
+
+container.clone("NewContainer") //clone current container with a new name
+
+container.wait(ContainerState.STOPPED, 10); //wait for container to reach a specific state with a timeout.
+```
 
 For more available functionality and examples, take a look at the unit tests or explore the API by yourself.	
 
@@ -91,7 +99,7 @@ Tests can be executed using command `mvn test`.
 License
 ========
 
-Copyright 2014 Waseem Hamshawi
+Copyright 2019 Waseem Hamshawi
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
